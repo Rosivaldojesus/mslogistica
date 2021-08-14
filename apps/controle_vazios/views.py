@@ -13,4 +13,4 @@ class CadastrarVazio(CreateView):
     model = ControleVazios
     form_class = ControleVaziosForm
     template_name = 'controle_vazios/cadastrar-vazio.html'
-    success_url = '/'
+    success_url = '/controle-vazios/'
