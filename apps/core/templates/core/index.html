@@ -4,19 +4,67 @@
 
 {% block main %}
 <div class="container-xl">
-    <div>
+    <div class="mt-4">
         <h2>MSLogística</h2>
     </div>
 
     <hr>
     <hr>
-
+    <!-- Inìcio do Controle de Vazios-->
     <div>
-        <h6></h6>
-
-
+        <div class="card shadow">
+            <div class="card-header bg-warning">
+                <h5>Controle de Vazios</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card border-0">
+                        <div class="card-body">
+                            <h5>Total: {{ quant_vazios }}</h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card border-0">
+                        <div class="card-body" align="right">
+                            <a href="/controle-vazios/" class="btn btn-primary">Visualizar</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
     </div>
-  
-
+    <!-- FIM do Controle de Vazios-->
+    <hr>
+    <hr>
+    <!-- Inìcio do Controle de Fretes-->
+    <div>
+        <div class="card shadow">
+            <div class="card-header bg-info">
+                <h5>Tabela de Fretes</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card border-0">
+                        <div class="card-body">
+                            <h5>Total: {{ quant_fretes }}</h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card border-0">
+                        <div class="card-body" align="right">
+                            <a href="/controle-fretes/" class="btn btn-primary">Visualizar</a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIM do Controle de Fretes-->
 </div>
 {% endblock %}
