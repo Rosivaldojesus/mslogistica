@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main %}
+<div class="container-xl">
+    <div>
+        <h2>MSLogística - Controle Vazios</h2>
+    </div>
+
+    <div class="table-responsive-sm" align="right">
+        <a href="/controle-vazios/cadastrar-vazio/">Cadastrar Vazios</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table ">
+          <thead class="table-warning">
+            <tr>
+              <th scope="col">Nº Booking</th>
+              <th scope="col">Pol x Pod</th>
+              <th scope="col">Navio</th>
+              <th scope="col">ETA</th>
+              <th scope="col">Armador</th>
+              <th scope="col">QTD</th>
+              <th scope="col">Type</th>
+              <th scope="col">Status</th>
+              <th scope="col">Cotação</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for vazio in vazios %}
+            <tr>
+              <th>{{ vazio.number_booking }}</th>
+              <td>{{ vazio.pol_pod }}</td>
+              <td>{{ vazio.navio }}</td>
+              <td>{{ vazio.eta|date:"d M, Y" }}</td>
+              <td>{{ vazio.armador }}</td>
+              <td>{{ vazio.quantidade }}</td>
+              <td>{{ vazio.type }}</td>
+              <td>{{ vazio.status }}</td>
+              <td>{{ vazio.cotacao }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    </div>
+  
+
+</div>
+{% endblock %}
