@@ -4,7 +4,8 @@ from django.db import models
 
 class ControleVazios(models.Model):
     number_booking = models.CharField(max_length=255)
-    pol_pod = models.CharField(max_length=255)
+    pol = models.CharField(max_length=255)
+    pod = models.CharField(max_length=255)
     navio = models.CharField(max_length=255)
     eta = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True, verbose_name='ETA')
     armador = models.CharField(max_length=255)
