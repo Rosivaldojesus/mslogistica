@@ -17,7 +17,8 @@
           <thead class="table-warning">
             <tr>
               <th scope="col">Nº Booking</th>
-              <th scope="col">Pol x Pod</th>
+              <th scope="col">Pol</th>
+              <th scope="col">Pod</th>
               <th scope="col">Navio</th>
               <th scope="col">ETA</th>
               <th scope="col">Armador</th>
@@ -31,7 +32,8 @@
           {% for vazio in vazios %}
             <tr>
               <th>{{ vazio.number_booking }}</th>
-              <td>{{ vazio.pol_pod }}</td>
+              <td>{{ vazio.pol }}</td>
+              <td>{{ vazio.pod }}</td>
               <td>{{ vazio.navio }}</td>
               <td>{{ vazio.eta|date:"d M, Y" }}</td>
               <td>{{ vazio.armador }}</td>
