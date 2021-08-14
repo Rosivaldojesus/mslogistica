@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'apps.core',
+    'apps.controle_fretes',
     'apps.controle_vazios',
 
     'crispy_forms',

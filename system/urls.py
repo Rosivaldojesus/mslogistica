@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.core.urls')),
     path('controle-vazios/', include('apps.controle_vazios.urls')),
+    path('controle-fretes/', include('apps.controle_fretes.urls')),
 ]
 
 
