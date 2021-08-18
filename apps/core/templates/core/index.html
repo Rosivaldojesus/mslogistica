@@ -18,17 +18,24 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <div class="card border-0">
                         <div class="card-body">
-                            <h5>Total: {{ quant_vazios }}</h5>
+                            <a href="/controle-vazios/vazio-disponivel/" class="btn btn-success">Disponíveis: ( {{ quant_vazios_disponiveis }} )</a>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                       <div class="card border-0">
                         <div class="card-body" align="right">
-                            <a href="/controle-vazios/" class="btn btn-primary">Visualizar</a>
+                            <a href="/controle-vazios/vazio-vendido/" class="btn btn-warning">Vendidos: ( {{ quant_vazios_vendidos }} )</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card border-0">
+                        <div class="card-body" align="right">
+                            <a  href="/controle-vazios/cadastrar-vazio/" class="btn btn-primary">Cadastrar Vazios</a>
                         </div>
                       </div>
                     </div>
@@ -37,6 +44,8 @@
         </div>
     </div>
     <!-- FIM do Controle de Vazios-->
+
+
     <hr>
     <hr>
     <!-- Inìcio do Controle de Fretes-->

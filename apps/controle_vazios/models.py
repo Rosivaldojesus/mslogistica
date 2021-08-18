@@ -3,22 +3,24 @@ from django.db import models
 # Create your models here.
 
 class ControleVazios(models.Model):
-    number_booking = models.CharField(max_length=255)
-    pol = models.CharField(max_length=255)
-    pod = models.CharField(max_length=255)
-    navio = models.CharField(max_length=255)
+    number_booking = models.CharField(max_length=255, blank=True, null=True)
+    pol = models.CharField(max_length=255, blank=True, null=True)
+    pod = models.CharField(max_length=255, blank=True, null=True)
+    navio = models.CharField(max_length=255, blank=True, null=True)
     eta = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True, verbose_name='ETA')
-    armador = models.CharField(max_length=255)
+    armador = models.CharField(max_length=255, blank=True, null=True)
     quantidade = models.DecimalField(max_digits=8, decimal_places=0, blank=True, null=True)
-    type = models.CharField(max_length=255)
+    cmmdty = models.CharField(max_length=255, blank=True, null=True)
+    type = models.CharField(max_length=255, blank=True, null=True)
     STATUS_CHOICES = (
         ('Vazio', 'Vazio'),
         ('Vendido', 'Vendido'),
     )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
-
-    cotacao = models.CharField(max_length=255)
-    observacoes = models.TextField()
+    cotacao = models.CharField(max_length=255, blank=True, null=True)
+    shipper = models.CharField(max_length=255, blank=True, null=True)
+    contrato_venda = models.CharField(max_length=255, blank=True, null=True)
+    observacoes = models.TextField(blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'ControleVazios'

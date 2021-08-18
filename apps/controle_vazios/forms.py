@@ -37,3 +37,15 @@ class ControleVaziosForm(forms.ModelForm):
                                choices=([('Vazio', 'Vazio'), ('Vendido', 'Vendido')]), initial='', required=True, )
     cotacao = forms.CharField(label="COTAÇÃO")
     observacoes = forms.CharField(widget=forms.Textarea(attrs={'rows':3}), label="OBSERVAÇÕES")
+
+
+class VenderVaziosForm(forms.ModelForm):
+    class Meta:
+        model = ControleVazios
+
+        fields = ['shipper',
+                  'contrato_venda',
+                  ]
+
+    shipper = forms.CharField(label="Shipper")
+    contrato_venda = forms.CharField(label="Contrato de Venda")
