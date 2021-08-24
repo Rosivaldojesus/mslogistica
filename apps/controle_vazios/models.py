@@ -7,10 +7,10 @@ class ControleVazios(models.Model):
     pol = models.CharField(max_length=255, blank=True, null=True)
     pod = models.CharField(max_length=255, blank=True, null=True)
     navio = models.CharField(max_length=255, blank=True, null=True)
+    cmmdty = models.CharField(max_length=255, blank=True, null=True)
     eta = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True, verbose_name='ETA')
     armador = models.CharField(max_length=255, blank=True, null=True)
     quantidade = models.DecimalField(max_digits=8, decimal_places=0, blank=True, null=True)
-    cmmdty = models.CharField(max_length=255, blank=True, null=True)
     type = models.CharField(max_length=255, blank=True, null=True)
     STATUS_CHOICES = (
         ('Vazio', 'Vazio'),

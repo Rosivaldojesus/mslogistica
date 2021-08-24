@@ -10,6 +10,7 @@
 
     <div class="mt-2 mb-2" align="right">
         <a href="/controle-vazios/cadastrar-vazio/" class="btn btn-primary">Cadastrar Vazios</a>
+
     </div>
 
     <div class="table-responsive">
@@ -20,6 +21,7 @@
               <th scope="col">Pol</th>
               <th scope="col">Pod</th>
               <th scope="col">Navio</th>
+              <th scope="col">Commodity</th>
               <th scope="col">ETA</th>
               <th scope="col">Armador</th>
               <th scope="col">QTD</th>
@@ -36,6 +38,7 @@
               <td>{{ vazio.pol }}</td>
               <td>{{ vazio.pod }}</td>
               <td>{{ vazio.navio }}</td>
+              <td>{{ vazio.cmmdty }}</td>
               <td>{{ vazio.eta|date:"d M, Y" }}</td>
               <td>{{ vazio.armador }}</td>
               <td>{{ vazio.quantidade }}</td>

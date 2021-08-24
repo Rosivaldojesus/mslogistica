@@ -15,10 +15,12 @@ class ControleVaziosForm(forms.ModelForm):
         model = ControleVazios
 
         fields = ['number_booking',
-                  'pol_pod',
+                  'pol',
+                'pod',
                   'navio',
                   'eta',
                   'armador',
+                  'cmmdty',
                   'quantidade',
                   'type',
                   'status',
@@ -26,17 +28,19 @@ class ControleVaziosForm(forms.ModelForm):
                   'observacoes'
                   ]
 
-    number_booking = forms.CharField(label="Nº BOOKING")
-    pol_pod = forms.CharField(label="POL X POD")
-    navio = forms.CharField(label="NAVIO")
-    eta = forms.DateField(widget=NumberInput(attrs={'type': 'date'}), label="ETA")
-    armador = forms.CharField(label="ARMADOR")
-    quantidade = forms.DecimalField(label="QTD")
-    type = forms.CharField(label="TYPE")
+    number_booking = forms.CharField(label="Nº BOOKING",  required=False)
+    pol = forms.CharField(label="POL",  required=False)
+    pod = forms.CharField(label="POD",  required=False)
+    navio = forms.CharField(label="NAVIO",  required=False)
+    eta = forms.DateField(widget=NumberInput(attrs={'type': 'date'}), label="ETA",  required=False)
+    armador = forms.CharField(label="ARMADOR",  required=False)
+    cmmdty = forms.CharField(label="COMMODITY",  required=False)
+    quantidade = forms.DecimalField(label="QTD",  required=False)
+    type = forms.CharField(label="TYPE",  required=False)
     status = forms.ChoiceField(widget=forms.Select(),
-                               choices=([('Vazio', 'Vazio'), ('Vendido', 'Vendido')]), initial='', required=True, )
-    cotacao = forms.CharField(label="COTAÇÃO")
-    observacoes = forms.CharField(widget=forms.Textarea(attrs={'rows':3}), label="OBSERVAÇÕES")
+                               choices=([('Vazio', 'Vazio'), ('Vendido', 'Vendido')]), initial='',  required=False )
+    cotacao = forms.CharField(label="COTAÇÃO",  required=False)
+    observacoes = forms.CharField(widget=forms.Textarea(attrs={'rows':3}), label="OBSERVAÇÕES", required=False)
 
 
 class VenderVaziosForm(forms.ModelForm):

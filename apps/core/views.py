@@ -7,8 +7,8 @@ from ..controle_fretes.models import ControleFretes
 def Index(request):
     quant_fretes = ControleFretes.objects.all().count()
     quant_vazios = ControleVazios.objects.all().count()
-    quant_vazios_disponiveis = ControleVazios.objects.filter(shipper__isnull=True).filter(contrato_venda__isnull=True).count()
-    quant_vazios_vendidos = ControleVazios.objects.filter(shipper__isnull=False).filter(contrato_venda__isnull=False).count()
+    quant_vazios_disponiveis = ControleVazios.objects.filter(status='Vazio').count()
+    quant_vazios_vendidos = ControleVazios.objects.filter(status='Vendido').count()
 
 
     return render(request, 'core/index.html', {

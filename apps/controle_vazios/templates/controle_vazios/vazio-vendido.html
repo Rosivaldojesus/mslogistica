@@ -8,6 +8,27 @@
         <h2>Vazio Vendidos</h2>
     </div>
 
+    
+
+    	<!-- INÍCIO  Campo de Pesquisas-->
+	<div class="mt-3">
+		<form method="GET">
+		   <div class="row">
+			   <div class="form-group col-10">
+				   <input type="search" class="form-control"  placeholder="Informe nº Booking"
+						  name="q" value="{{ request.GET.q }}">
+			   </div>
+			   <div class="form-group col-2">
+				   <button class=" form-control btn-success">
+					<i class="fas fa-search"></i>
+					Pesquisar
+				   </button>
+			   </div>
+		   </div>
+	   </form>
+	</div>
+	<!-- FIM Campo de Pesquisas-->
+
 
 
     <div class="table-responsive">
@@ -24,6 +45,9 @@
               <th scope="col">Type</th>
               <th scope="col">Status</th>
               <th scope="col">Cotação</th>
+              <th scope="col">Shipper</th>
+              <th scope="col">Contrato</th>
+              <th scope="col">Opções</th>
 
             </tr>
           </thead>
@@ -40,6 +64,11 @@
               <td>{{ vazio.type }}</td>
               <td>{{ vazio.status }}</td>
               <td>{{ vazio.cotacao }}</td>
+              <td>{{ vazio.shipper }}</td>
+              <td>{{ vazio.contrato_venda }}</td>
+              <td>
+                  <a href="/controle-vazios/visualizar-vazio/?id={{ vazio.id }}">Visualizar</a>
+              </td>
 
             </tr>
           {% endfor %}
