@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main %}
+<div class="container-xl">
+
+  <!--Botão de voltar a página anterior-->
+  <div class="mt-4" align="right" >
+    <a href="/booking/lista-booking-vendido/" class="btn btn-outline-primary">Voltar</a>
+  </div>
+
+
+  <div class="mt-2">
+    <h2 style="color: darkblue;">Booking #{{ booking.id }} : {{ booking.number_booking }}</h2>
+  </div>
+
+  <hr>
+
+  <div>
+    <p><strong>Porto de Origem:</strong> {{ booking.pol }}</p>
+    <p><strong>Porto de Destino:</strong> {{ booking.pod }}</p>
+    <p><strong>Navio:</strong> {{ booking.navio }}</p>
+    <p><strong>Commodity:</strong> {{ booking.commodity }}</p>
+    <p><strong>ETA: </strong>{{ booking.eta }}</p>
+    <p><strong>Armador:</strong> {{ booking.armador }}</p>
+    <p><strong>Quantidade:</strong> {{ booking.quantidade }}</p>
+    <p><strong>Type: </strong>{{ booking.type }}</p>
+    <p><strong>Status:</strong> {{ booking.status }}</p>
+    <p><strong>Cotação:</strong> {{ booking.cotacao }}</p>
+    <p><strong>Shipper:</strong> {{ booking.shipper }}</p>
+    <p><strong>contrato de Venda</strong> {{ booking.contrato_venda }}</p>
+    <p><strong>Cadastrou o Booking:</strong> {{ booking.cadastrado_por }}</p>
+    <p><strong>Filial:</strong> {{ booking.escritorio }}</p>
+    <p><strong>Vendedor:</strong> {{ booking.vendido_por }}</p>
+    <p><strong>Observações:</strong> {{ booking.observacoes }}</p>
+  </div>  
+</div>
+{% endblock %}

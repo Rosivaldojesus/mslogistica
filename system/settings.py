@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.departamentos',
     'apps.booking',
     'apps.cotacoes',
+    'apps.escritorios',
 
     'apps.core',
     'apps.controle_fretes',
