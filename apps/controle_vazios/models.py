@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -20,6 +22,9 @@ class ControleVazios(models.Model):
     cotacao = models.CharField(max_length=255, blank=True, null=True)
     shipper = models.CharField(max_length=255, blank=True, null=True)
     contrato_venda = models.CharField(max_length=255, blank=True, null=True)
+    cadastrado_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Cadastrado_Por', blank=True, null=True)
+    vendido_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Vendido_Por', blank=True, null=True)
+    vendido_por_filial = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Vendido_Por_Filial', blank=True, null=True)
     observacoes = models.TextField(blank=True, null=True)
 
     class Meta:

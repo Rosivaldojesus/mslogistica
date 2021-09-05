@@ -4,49 +4,67 @@
 
 {% block main %}
 <div class="container-xl">
+
+  <div class="mt-4">
+    <!-- INÍCIO Messagens -->
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+      {% endfor %}
+      {% endif %}
+  <!-- FIM Messagens -->   
+  </div>
+
+  <!-- O nome da empresa -->
     <div class="mt-4">
-        <h2>MSLogística</h2>
+      <h2><strong><a style="color: darkorange;">MSLog</a><a style="color: darkblue;">ística</a></strong></h2>
     </div>
 
+
+    <!-- Botões para a impressão de relatórios-->
     <div align="right">
         Exportar arquivo (dados dos Booking): <a href="exportar-csv/" class="btn btn-info" title="Exportar CSV"><i class="fas fa-file-csv"></i></a>
     </div>
 
     <hr>
     <hr>
+
+    
     <!-- Inìcio do Controle de Vazios-->
     <div class="p-3 mb-2 bg-warning text-dark"><h5>Controle de Booking</h5></div>
-    <div class="card shadow border-0">
+    <div class="card border-0 ">
       <div class="row">
         <div class="col-sm-4">
-          <div class="card mt-2 mb-2 mr-2 ml-2 shadow border-0">
+          <div class="card mt-2 mb-2 mr-2 ml-2 shadow border border-primary">
             <div class="card-body">
               <h5 class="card-title">Cadastrar Booking</h5>
               <p class="card-text">Realizar o cadastro de Booking, para disponibilizar para a venda.</p>
               <div align="right">
-                <a href="/controle-vazios/cadastrar-vazio/" class="btn btn-primary">Cadastrar</a>
+                <a href="/booking/cadastrar-booking/" class="btn btn-primary">Cadastrar</a>
               </div>
             </div>
           </div>
         </div>
         <div class="col-sm-4">
-          <div class="card mt-2 mb-2 mr-2 ml-2 shadow border-0">
+          <div class="card mt-2 mb-2 mr-2 ml-2 shadow border border-info">
             <div class="card-body">
-              <h5 class="card-title">Booking disponíveis ( {{ quant_vazios_disponiveis }} ) </h5>
+              <h5 class="card-title">Booking disponíveis ( {{ quantidade_boooking_disponivel }} ) </h5>
               <p class="card-text">Lista de Booking que estão disponíveis para venda.</p>
               <div align="right">
-                <a href="/controle-vazios/vazio-disponivel/" class="btn btn-primary">Visualizar</a>
+                <a href="/booking/lista-booking-disponivel/" class="btn btn-info">Visualizar</a>
               </div>
             </div>
           </div>
         </div>
         <div class="col-sm-4">
-          <div class="card mt-2 mb-2 mr-2 ml-2 shadow border-0">
+          <div class="card mt-2 mb-2 mr-2 ml-2 shadow border border-success">
             <div class="card-body">
-              <h5 class="card-title">Booking vendidos ( {{ quant_vazios_vendidos }} )</h5>
+              <h5 class="card-title">Booking vendidos ( {{ quantidade_boooking_vendido }} )</h5>
               <p class="card-text">Lista de Booking, que foram concluído a venda.</p>
               <div align="right">
-                <a href="/controle-vazios/vazio-vendido/" class="btn btn-primary">Visualizar</a>
+                <a href="/booking/lista-booking-vendido/" class="btn btn-success">Visualizar</a>
               </div>
             </div>
           </div>
@@ -78,7 +96,7 @@
                     <div class="col-sm-6">
                       <div class="card border-0">
                         <div class="card-body" align="right">
-                            <a href="/controle-fretes/" class="btn btn-primary">Visualizar</a>
+                            <a href="/cotacoes/" class="btn btn-primary">Visualizar</a>
                         </div>
                       </div>
                     </div>

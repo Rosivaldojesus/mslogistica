@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}<title>Deletar Serviço</title>{% endblock %}
+{% block main %}
+<div class="container">
+  <h5 class="mt-4 mb-3">Tem certeza?</h5>
+    <hr>
+
+<h3 style="color: rgb(165, 148, 148);">Tem certeza de que deseja apagar o booking selecionado?</h3><br>
+
+
+<div>
+  <p>Booking: {{booking}}</p>
+</div>
+
+  <form action="" method="post"> {% csrf_token %}
+      <div>
+          <input type="submit" class="btn  btn-danger" value="sim, eu tenho certeza!!!">
+          <a href="/booking/lista-booking-disponivel/" class="btn btn-secondary">Não, me leve de volta!</a>
+      </div>
+  </form>
+</div>
+<br>
+<br>
+</div>
+{% endblock %}

@@ -12,5 +12,5 @@ def Index(request):
 class CadastrarFrete(CreateView):
     model = ControleFretes
     form_class = ControleFretesForm
-    template_name = 'controle_fretes/cadastrar-frete.html'
+    template_name = 'controle_fretes/cadastrar-cotacoes.html'
     success_url = '/controle-fretes/'

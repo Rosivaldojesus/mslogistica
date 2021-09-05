@@ -21,6 +21,10 @@ urlpatterns = [
     path('', include('apps.core.urls')),
     path('controle-vazios/', include('apps.controle_vazios.urls')),
     path('controle-fretes/', include('apps.controle_fretes.urls')),
+
+
+    path('booking/', include('apps.booking.urls')),
+    path('cotacoes/', include('apps.cotacoes.urls')),
 ]
 
 

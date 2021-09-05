@@ -40,6 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'apps.escritorios',
+    'apps.funcionarios',
+    'apps.departamentos',
+    'apps.booking',
+    'apps.cotacoes',
+
     'apps.core',
     'apps.controle_fretes',
     'apps.controle_vazios',
