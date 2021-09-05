@@ -50,7 +50,6 @@ class CadastrarBookingForm(forms.ModelForm):
     cadastrado_por = forms.ModelChoiceField(queryset=Funcionario.objects.all().order_by(), label="Quem Cadastrou?:")
     vendido_por = forms.ModelChoiceField(queryset=Funcionario.objects.all().order_by(), label="Quem vendeu?:")
 
-
     observacoes = forms.CharField(widget=forms.Textarea(attrs={'rows':3}), label="Observações:", required=False)
 
 

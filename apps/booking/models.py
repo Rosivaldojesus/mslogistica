@@ -24,10 +24,9 @@ class Booking(models.Model):
     shipper = models.CharField(max_length=255, blank=True, null=True)
     contrato_venda = models.CharField(max_length=255, blank=True, null=True)
     cadastrado_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Cadastrado_Por_Por', blank=True, null=True)
-    data_cadastro = models
-    escritorio = models.ForeignKey(Escritorio, on_delete=models.DO_NOTHING, related_name='Escritório', blank=True, null=True)
+
     vendido_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Vendido_Por_Por', blank=True, null=True)
-    data_venda = models
+
     vendido_por_filial = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Vendido_Por_Filial_Por', blank=True, null=True)
     observacoes = models.TextField(blank=True, null=True)
 
