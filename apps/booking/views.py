@@ -78,7 +78,7 @@ def RemoverBookingDisponivel(request, id=None):
 def ListaBookingVendido(request):
     #Exibi a lista com apenas os bookings da filial do funcionario )
     if request.user.funcionario.escritorio:
-        bookings = Booking.objects.filter(status='Vendido').filter(escritorio=request.user.funcionario.escritorio)
+        bookings = Booking.objects.filter(status='Vendido').filter(vendido_por_filial=request.user.funcionario.escritorio)
         queryset = request.GET.get('q')
         if queryset:
             bookings = Booking.objects.filter(
