@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import Index
-from ..controle_vazios.views import ExportarCSV
-from .views import  login_user, submit_login, logout_user
+
+from .views import  login_user, submit_login, logout_user, Logs
 
 
 
@@ -10,7 +10,6 @@ urlpatterns = [
     path('login/', login_user),
     path('logout/', logout_user),
     path('login/submit', submit_login),
-
-    path('exportar-csv/', ExportarCSV)
+    path('logs', Logs),
 
 ]

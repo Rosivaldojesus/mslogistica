@@ -6,10 +6,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, DeleteView
 from django.db.models import F, Q
 from django.http import HttpResponse
-
+import csv
 
 from .models import Booking
-from .forms import VenderBookingForm, CadastrarBookingForm
+from .forms import VenderBookingForm, CadastrarBookingForm, EditarBookingForm
 
 
 # Create your views here.
@@ -38,7 +38,7 @@ class BookingCreate(SuccessMessageMixin,CreateView):
 @login_required(login_url='/login/')
 def EditarBookingDisponivel(request, id=None):
     booking = get_object_or_404(Booking, id=id)
-    form = CadastrarBookingForm(request.POST or None, instance=booking)
+    form = EditarBookingForm(request.POST or None, instance=booking)
     if form.is_valid():
         obj = form.save()
         obj.save()
@@ -148,18 +148,14 @@ def VisualizarBookingDisponivel(request):
 def ExportarCSV(request):
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="relatorio-vazios.csv"'
+    response['Content-Disposition'] = 'attachment; filename="relatorio-booking.csv"'
 
-    vazios = ControleVazios.objects.all()
+    bookings = Booking.objects.all()
 
     writer = csv.writer(response)
-    writer.writerow(['id', 'number_booking', 'pol', 'pod', 'navio',
-                     'cmmdty', 'eta', 'armador','quantidade','type','status','cotacao','shipper','contrato_venda','observacoes',
+    writer.writerow(['id','number_booking','pol','pod','navio','commodity','eta','armador','quantidade','type','status','cotacao','shipper','contrato_venda','cadastrado_por','data_cadastro','vendido_por','data_venda','vendido_por_filial','observacoes'
                      ])
-    for vazio in vazios:
-        writer.writerow([vazio.id, vazio.number_booking, vazio.pol, vazio.pod, vazio.navio, vazio.cmmdty, vazio.eta,
-                         vazio.armador, vazio.quantidade, vazio.type, vazio.status, vazio.cotacao, vazio.shipper,
-                         vazio.contrato_venda, vazio.observacoes
+    for booking in bookings:
+        writer.writerow([booking.id ,booking.number_booking,booking.pol,booking.pod,booking.navio,booking.commodity, booking.eta ,booking.armador, booking.quantidade, booking.type, booking.status, booking.cotacao, booking.shipper, booking.contrato_venda, booking.cadastrado_por, booking.data_cadastro, booking.vendido_por, booking.data_venda, booking.vendido_por_filial ,booking.observacoes
                          ])
-
     return response

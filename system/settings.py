@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     'apps.booking',
     'apps.cotacoes',
     'apps.core',
-    'apps.controle_fretes',
-    'apps.controle_vazios',
 
     'crispy_forms',
 ]

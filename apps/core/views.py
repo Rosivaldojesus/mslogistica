@@ -5,9 +5,6 @@ from django.contrib.auth import authenticate, login, logout
 from ..booking.models import Booking
 
 
-from ..controle_vazios.models import ControleVazios
-from ..controle_fretes.models import ControleFretes
-
 # Create your views here.
 def login_user(request):
     return render(request, 'core/login.html')
@@ -32,15 +29,16 @@ def submit_login(request):
 
 @login_required(login_url='/login/')
 def Index(request):
-    quant_fretes = ControleFretes.objects.all().count()
-    quant_vazios = ControleVazios.objects.all().count()
-
-
     quantidade_boooking_disponivel = Booking.objects.filter(status='Vazio').count()
     quantidade_boooking_vendido = Booking.objects.filter(status='Vendido').count()
-
     return render(request, 'core/index.html', {
-        'quant_vazios':quant_vazios, 'quant_fretes':quant_fretes,
         'quantidade_boooking_disponivel':quantidade_boooking_disponivel,
         'quantidade_boooking_vendido': quantidade_boooking_vendido
         })
+
+
+
+from django.contrib.admin.models import LogEntry, ADDITION
+def Logs(request):
+    logs = LogEntry.objects.all()
+    return render(request, 'core/logs.html', {'logs': logs})

@@ -4,8 +4,6 @@ from ..escritorios.models import Escritorio
 from ..departamentos.models import Departamento
 
 # Create your models here.
-
-
 class Funcionario(models.Model):
     nome = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.PROTECT)

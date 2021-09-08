@@ -2,17 +2,18 @@ from django.db import models
 
 # Create your models here.
 class Cotacoes(models.Model):
-    pol = models.CharField(max_length=255)
-    pod = models.CharField(max_length=255)
-    carrier = models.CharField(max_length=255)
-    quotation = models.CharField(max_length=255)
-    cmmdty = models.CharField(max_length=255)
-    dv20 = models.CharField(max_length=255)
-    dv40 = models.CharField(max_length=255)
-    hc40 = models.CharField(max_length=255)
+    pol = models.CharField(max_length=255, blank=True, null=True)
+    pod = models.CharField(max_length=255, blank=True, null=True)
+    carrier = models.CharField(max_length=255, blank=True, null=True)
+    quotation = models.CharField(max_length=255, blank=True, null=True)
+    cmmdty = models.CharField(max_length=255, blank=True, null=True)
+    dv20 = models.CharField(max_length=255, blank=True, null=True)
+    dv40 = models.CharField(max_length=255, blank=True, null=True)
+    hc40 = models.CharField(max_length=255, blank=True, null=True)
     valid = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True)
-    detention = models.CharField(max_length=255)
-    demurrage = models.CharField(max_length=255)
+    detention = models.CharField(max_length=255, blank=True, null=True)
+    demurrage = models.CharField(max_length=255, blank=True, null=True)
+    data_cadastro = models.DateField(blank=True, null=True, verbose_name='Data do Cadastro')
 
     class Meta:
         verbose_name_plural = 'Cotações'

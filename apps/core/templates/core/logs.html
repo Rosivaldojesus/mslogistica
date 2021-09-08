@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main %}
+<div class="container-xl">
+
+  <div class="mt-4">
+    <!-- INÍCIO Messagens -->
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+      {% endfor %}
+      {% endif %}
+  <!-- FIM Messagens -->   
+  </div>
+
+  <!-- O nome da empresa -->
+    <div class="mt-4">
+      <h2><strong>Log´s</strong></h2>
+    </div>
+
+
+
+
+    
+    <!-- Inìcio do Controle de Vazios-->
+    <div>
+
+        {% for log in logs %}
+
+        {{ log.action_time }} - {{ log.object_repr }} - {{ log.change_message }}<br><hr>
+
+        {% endfor %}
+    </div>
+    <!-- FIM do Controle de Vazios-->
+
+
+</div>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from ..escritorios.models import Escritorio
+from django.utils import timezone
 
 
 # Create your models here.
@@ -24,9 +25,9 @@ class Booking(models.Model):
     shipper = models.CharField(max_length=255, blank=True, null=True)
     contrato_venda = models.CharField(max_length=255, blank=True, null=True)
     cadastrado_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Cadastrado_Por_Por', blank=True, null=True)
-
+    data_cadastro = models.DateField(blank=True, null=True, verbose_name='Data do Cadastro')
     vendido_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Vendido_Por_Por', blank=True, null=True)
-
+    data_venda = models.DateField(blank=True, null=True, verbose_name='Data da Venda')
     vendido_por_filial = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Vendido_Por_Filial_Por', blank=True, null=True)
     observacoes = models.TextField(blank=True, null=True)
 

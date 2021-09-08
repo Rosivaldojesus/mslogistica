@@ -5,6 +5,7 @@ from.views import ListaBookingDisponivel, EditarBookingDisponivel, VenderBooking
 
 from.views import ListaBookingVendido, EditarBookingVendido, VisualizarBookingVendido,  RemoverBookingVendido
 
+from .views import ExportarCSV
 
 urlpatterns = [
     path('', Index),
@@ -16,6 +17,8 @@ urlpatterns = [
     path('visualizar-booking-disponivel/', VisualizarBookingDisponivel),
     path('vender-booking/<int:id>', VenderBooking),
     path('deletar-booking-vendido/<int:id>', RemoverBookingVendido),
+
+path('exportar-csv/', ExportarCSV),
 
     path('editar-booking-vendido/<int:id>', EditarBookingVendido),
 
