@@ -153,9 +153,9 @@ def ExportarCSV(request):
     bookings = Booking.objects.all()
 
     writer = csv.writer(response)
-    writer.writerow(['id','number_booking','pol','pod','navio','commodity','eta','armador','quantidade','type','status','cotacao','shipper','contrato_venda','cadastrado_por','data_cadastro','vendido_por','data_venda','vendido_por_filial','observacoes'
+    writer.writerow(['id','number_booking','pol','pod','navio','commodity','eta','armador','quantidade','type','status','cotacao','shipper','contrato_venda','cadastrado_por','data_cadastro','vendido_por','data_venda','escritorio','observacoes'
                      ])
     for booking in bookings:
-        writer.writerow([booking.id ,booking.number_booking,booking.pol,booking.pod,booking.navio,booking.commodity, booking.eta ,booking.armador, booking.quantidade, booking.type, booking.status, booking.cotacao, booking.shipper, booking.contrato_venda, booking.cadastrado_por, booking.data_cadastro, booking.vendido_por, booking.data_venda, booking.vendido_por_filial ,booking.observacoes
+        writer.writerow([booking.id ,booking.number_booking,booking.pol,booking.pod,booking.navio,booking.commodity, booking.eta ,booking.armador, booking.quantidade, booking.type, booking.status, booking.cotacao, booking.shipper, booking.contrato_venda, booking.cadastrado_por, booking.data_cadastro, booking.vendido_por, booking.data_venda, booking.escritorio ,booking.observacoes
                          ])
     return response
