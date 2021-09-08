@@ -7,6 +7,9 @@ from django.views.generic.edit import CreateView, DeleteView
 from django.db.models import F, Q
 from django.http import HttpResponse
 import csv
+from datetime import datetime, date
+
+
 
 from .models import Booking
 from .forms import VenderBookingForm, CadastrarBookingForm, EditarBookingForm
@@ -24,15 +27,27 @@ def Index(request):
 
 
 class BookingCreate(SuccessMessageMixin,CreateView):
+    today = date.today()
     model = Booking
     form_class = CadastrarBookingForm
     template_name = 'booking/cadastrar-booking.html'
     success_url = '/'
     success_message = 'Booking Cadastrado com sucesso!!!!'
 
+
+
     def form_valid(self, form):
         form.instance.status = 'Vazio'
+        form.instance.cadastrado_por = self.request.user
+
+
+
+
+
+
         return super(BookingCreate, self).form_valid(form)
+
+
 
 
 @login_required(login_url='/login/')
@@ -110,6 +125,7 @@ def VenderBooking(request, id=None):
     if form.is_valid():
         obj = form.save(commit=False)
         obj.status = 'Vendido'
+        obj.vendido_por = request.user
         obj.save()
         messages.success(request, 'Booking vendido com sucesso')
         return redirect('/')

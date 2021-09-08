@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from ..escritorios.models import Escritorio
 from django.utils import timezone
+from datetime import datetime
 
 
 # Create your models here.
@@ -24,11 +25,11 @@ class Booking(models.Model):
     cotacao = models.CharField(max_length=255, blank=True, null=True)
     shipper = models.CharField(max_length=255, blank=True, null=True)
     contrato_venda = models.CharField(max_length=255, blank=True, null=True)
-    cadastrado_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Cadastrado_Por_Por', blank=True, null=True)
-    data_cadastro = models.DateField(blank=True, null=True, verbose_name='Data do Cadastro')
-    vendido_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Vendido_Por_Por', blank=True, null=True)
+    cadastrado_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Cadastrado_Por', blank=True, null=True)
+    data_cadastro = models.DateField(default=datetime.now, verbose_name='Data do Cadastro')
+    vendido_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Vendido_Por', blank=True, null=True)
     data_venda = models.DateField(blank=True, null=True, verbose_name='Data da Venda')
-    escritorio = models.ForeignKey(Escritorio, on_delete=models.DO_NOTHING, related_name='Vendido_Por_Filial_Por', blank=True, null=True)
+    escritorio = models.ForeignKey(Escritorio, on_delete=models.DO_NOTHING, related_name='Vendido_Por_Filial_Por', blank=False, null=False)
     observacoes = models.TextField(blank=True, null=True)
 
     class Meta:

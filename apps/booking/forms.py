@@ -1,3 +1,5 @@
+from datetime import date
+
 from django import forms
 from django.forms import NumberInput
 
@@ -23,30 +25,26 @@ class CadastrarBookingForm(forms.ModelForm):
                   'navio',
                   'eta',
                   'armador',
-                  'cmmdty',
+                  'commodity',
                   'quantidade',
                   'type',
                   'cotacao',
-                  'shipper',
-                  'contrato_venda',
-                  'cadastrado_por',
-                  'vendido_por',
                   'observacoes'
         ]
 
-    number_booking = forms.CharField(label="Nº Booking:",  required=False)
-    escritorio = forms.ModelChoiceField(queryset=Escritorio.objects.all().order_by('nome_escritorio'), label="Escritório:")
+    number_booking = forms.CharField(label="Nº Booking:",  required=True)
+    escritorio = forms.ModelChoiceField(queryset=Escritorio.objects.all().order_by('nome_escritorio'), label="Escritório:",required=True)
     pol = forms.CharField(label="Pol:",  required=False)
     pod = forms.CharField(label="Pod:",  required=False)
     navio = forms.CharField(label="Navio:",  required=False)
     eta = forms.DateField(widget=NumberInput(attrs={'type': 'date'}), label="Eta:",  required=False)
     armador = forms.CharField(label="Armador:",  required=False)
-    cmmdty = forms.CharField(label="Commodity:",  required=False)
+    commodity = forms.CharField(label="Commodity:",  required=False)
     quantidade = forms.DecimalField(label="Quantidade:",  required=False)
     type = forms.CharField(label="Type:",  required=False)
-    shipper = forms.CharField(label="Shipper:",  required=False)
+    #shipper = forms.CharField(label="Shipper:",  required=False)
     cotacao = forms.CharField(label="Cotação:",  required=False)
-    contrato_venda = forms.CharField(label="Contrato de Venda:",  required=False)
+    #contrato_venda = forms.CharField(label="Contrato de Venda:",  required=False)
 
     #cadastrado_por = forms.ModelChoiceField(queryset=Funcionario.objects.all().order_by(), label="Quem Cadastrou?:")
     #vendido_por = forms.ModelChoiceField(queryset=Funcionario.objects.all().order_by(), label="Quem vendeu?:")
@@ -67,7 +65,7 @@ class EditarBookingForm(forms.ModelForm):
                   'navio',
                   'eta',
                   'armador',
-                  'cmmdty',
+                  'commodity',
                   'quantidade',
                   'type',
                   'cotacao',
@@ -85,7 +83,7 @@ class EditarBookingForm(forms.ModelForm):
     navio = forms.CharField(label="Navio:",  required=False)
     eta = forms.DateField(widget=NumberInput(attrs={'type': 'date'}), label="Eta:",  required=False)
     armador = forms.CharField(label="Armador:",  required=False)
-    cmmdty = forms.CharField(label="Commodity:",  required=False)
+    commodity = forms.CharField(label="Commodity:",  required=False)
     quantidade = forms.DecimalField(label="Quantidade:",  required=False)
     type = forms.CharField(label="Type:",  required=False)
     shipper = forms.CharField(label="Shipper:",  required=False)
@@ -106,6 +104,13 @@ class VenderBookingForm(forms.ModelForm):
 
         fields = ['shipper',
                   'contrato_venda',
+                  'data_venda',
                   ]
+        widgets = {
+            'data_venda': forms.DateInput(
+        attrs = {'type': 'date', 'class': 'form_input', 'value': date.today().strftime("%Y-%m-%d")}),
+        }
+
+
     shipper = forms.CharField(label="Shipper")
     contrato_venda = forms.CharField(label="Contrato de Venda")

@@ -30,8 +30,8 @@ def submit_login(request):
 
 @login_required(login_url='/login/')
 def Index(request):
-    quantidade_boooking_disponivel = Booking.objects.filter(status='Vazio').count()
-    quantidade_boooking_vendido = Booking.objects.filter(status='Vendido').count()
+    quantidade_boooking_disponivel = Booking.objects.filter(status='Vazio').filter(escritorio=request.user.funcionario.escritorio).count()
+    quantidade_boooking_vendido = Booking.objects.filter(status='Vendido').filter(escritorio=request.user.funcionario.escritorio).count()
     quantidade_cotacoes = Cotacoes.objects.all().count()
     return render(request, 'core/index.html', {
         'quantidade_boooking_disponivel':quantidade_boooking_disponivel,

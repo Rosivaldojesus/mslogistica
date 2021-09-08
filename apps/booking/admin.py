@@ -5,7 +5,7 @@ from .models import Booking
 
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'number_booking','pol','pod','navio','status',)
+    list_display = ('id', 'number_booking','pol','pod','navio','status', 'escritorio')
     list_filter = ('number_booking','status',)
     search_fields = ('number_booking','pol','pod','navio', )
     list_display_links =  ('number_booking','pol','pod','navio','status',)
