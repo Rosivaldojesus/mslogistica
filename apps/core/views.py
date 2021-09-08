@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from ..booking.models import Booking
+from ..cotacoes.models import Cotacoes
 
 
 # Create your views here.
@@ -31,9 +32,12 @@ def submit_login(request):
 def Index(request):
     quantidade_boooking_disponivel = Booking.objects.filter(status='Vazio').count()
     quantidade_boooking_vendido = Booking.objects.filter(status='Vendido').count()
+    quantidade_cotacoes = Cotacoes.objects.all().count()
     return render(request, 'core/index.html', {
         'quantidade_boooking_disponivel':quantidade_boooking_disponivel,
-        'quantidade_boooking_vendido': quantidade_boooking_vendido
+        'quantidade_boooking_vendido': quantidade_boooking_vendido,
+        'quantidade_cotacoes': quantidade_cotacoes,
+
         })
 
 
