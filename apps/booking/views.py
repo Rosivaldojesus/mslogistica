@@ -50,7 +50,7 @@ def EditarBookingDisponivel(request, id=None):
 @login_required(login_url='/login/')
 def ListaBookingDisponivel(request):
     if request.user.funcionario.escritorio:
-        bookings = Booking.objects.filter(status='Vazio').filter(escritorio=request.user.funcionario.escritorio)
+        bookings = Booking.objects.filter(status='Vazio').filter(vendido_por_filial=request.user.funcionario.escritorio)
         queryset = request.GET.get('q')
         if queryset:
             bookings = Booking.objects.filter(
