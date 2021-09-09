@@ -12,8 +12,8 @@
         <div class="alert {{ message.tags }}" role="alert">
             {{ message }}
         </div>
-      {% endfor %}
-      {% endif %}
+    {% endfor %}
+    {% endif %}
   <!-- FIM Messagens -->   
   </div>
 
@@ -36,6 +36,7 @@
     <div class="p-3 mb-2 bg-warning text-dark"><h5>Controle de Booking</h5></div>
     <div class="card border-0 ">
       <div class="row">
+          {% if request.user.groups.all.0.name == "Administracao" %}
         <div class="col-sm-4">
           <div class="card mt-2 mb-2 mr-2 ml-2 shadow border border-primary">
             <div class="card-body">
@@ -47,10 +48,13 @@
             </div>
           </div>
         </div>
+        {% endif %}
         <div class="col-sm-4">
           <div class="card mt-2 mb-2 mr-2 ml-2 shadow border border-info">
             <div class="card-body">
-              <h5 class="card-title">Booking disponíveis ( {{ quantidade_boooking_disponivel }} ) </h5>
+
+                <h5 class="card-title">Booking disponíveis <!-- ( {{ quantidade_boooking_disponivel }} )  --></h5>
+
               <p class="card-text">Lista de Booking que estão disponíveis para venda.</p>
               <div align="right">
                 <a href="/booking/lista-booking-disponivel/" class="btn btn-info">Visualizar</a>
@@ -61,7 +65,7 @@
         <div class="col-sm-4">
           <div class="card mt-2 mb-2 mr-2 ml-2 shadow border border-success">
             <div class="card-body">
-              <h5 class="card-title">Booking vendidos ( {{ quantidade_boooking_vendido }} )</h5>
+              <h5 class="card-title">Booking vendidos <!-- ( {{ quantidade_boooking_vendido }} ) --> </h5>
               <p class="card-text">Lista de Booking, que foram concluído a venda.</p>
               <div align="right">
                 <a href="/booking/lista-booking-vendido/" class="btn btn-success">Visualizar</a>

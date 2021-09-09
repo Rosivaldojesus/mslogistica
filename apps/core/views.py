@@ -37,7 +37,6 @@ def Index(request):
         'quantidade_boooking_disponivel':quantidade_boooking_disponivel,
         'quantidade_boooking_vendido': quantidade_boooking_vendido,
         'quantidade_cotacoes': quantidade_cotacoes,
-
         })
 
 
