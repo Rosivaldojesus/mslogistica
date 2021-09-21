@@ -8,6 +8,7 @@ from django.db.models import F, Q
 from django.http import HttpResponse
 import csv
 from datetime import datetime, date
+from django.core.paginator import Paginator
 
 
 
@@ -23,6 +24,9 @@ def Index(request):
     if queryset:
         bookings = Booking.objects.filter(
             Q(number_booking__icontains=queryset))
+
+
+
     return render (request, 'booking/index.html', {'bookings': bookings})
 
 
@@ -39,12 +43,6 @@ class BookingCreate(SuccessMessageMixin,CreateView):
     def form_valid(self, form):
         form.instance.status = 'Vazio'
         form.instance.cadastrado_por = self.request.user
-
-
-
-
-
-
         return super(BookingCreate, self).form_valid(form)
 
 
@@ -76,6 +74,13 @@ def ListaBookingDisponivel(request):
         if queryset:
             bookings = Booking.objects.filter(
                 Q(number_booking__icontains=queryset)).filter(status='Vazio')
+
+    paginator = Paginator(bookings, 10)  # Show 25 contacts per page
+
+    page = request.GET.get('page')
+    bookings = paginator.get_page(page)
+
+
     return render (request, 'booking/lista-booking-disponivel.html', {'bookings': bookings})
 
 
@@ -169,9 +174,15 @@ def ExportarCSV(request):
     bookings = Booking.objects.all()
 
     writer = csv.writer(response)
-    writer.writerow(['id','number_booking','pol','pod','navio','commodity','eta','armador','quantidade','type','status','cotacao','shipper','contrato_venda','cadastrado_por','data_cadastro','vendido_por','data_venda','escritorio','observacoes'
+    writer.writerow(['id','number_booking','pol','pod','navio','commodity','eta','armador','quantidade','type','status',
+                     'cotacao','shipper','contrato_venda','cadastrado_por','data_cadastro','vendido_por','data_venda',
+                     'escritorio','data_ddl_draft','hora_ddl_draft','observacoes'
                      ])
     for booking in bookings:
-        writer.writerow([booking.id ,booking.number_booking,booking.pol,booking.pod,booking.navio,booking.commodity, booking.eta ,booking.armador, booking.quantidade, booking.type, booking.status, booking.cotacao, booking.shipper, booking.contrato_venda, booking.cadastrado_por, booking.data_cadastro, booking.vendido_por, booking.data_venda, booking.escritorio ,booking.observacoes
+        writer.writerow([booking.id ,booking.number_booking,booking.pol,booking.pod,booking.navio,booking.commodity,
+                         booking.eta ,booking.armador, booking.quantidade, booking.type, booking.status, booking.cotacao,
+                         booking.shipper, booking.contrato_venda, booking.cadastrado_por, booking.data_cadastro,
+                         booking.vendido_por, booking.data_venda, booking.escritorio,booking.data_ddl_draft,
+                         booking.hora_ddl_draft ,booking.observacoes
                          ])
     return response

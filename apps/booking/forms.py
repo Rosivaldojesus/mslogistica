@@ -29,6 +29,8 @@ class CadastrarBookingForm(forms.ModelForm):
                   'quantidade',
                   'type',
                   'cotacao',
+                  'data_ddl_draft',
+                  'hora_ddl_draft',
                   'observacoes'
         ]
 
@@ -44,6 +46,10 @@ class CadastrarBookingForm(forms.ModelForm):
     type = forms.CharField(label="Type:",  required=False)
     #shipper = forms.CharField(label="Shipper:",  required=False)
     cotacao = forms.CharField(label="Cotação:",  required=False)
+    data_ddl_draft = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}),label="Data DDL:",  required=False)
+    hora_ddl_draft = forms.TimeField(widget=forms.DateInput(attrs={"type": "time"}), label="Hora DDL:",  required=False)
+
+
     #contrato_venda = forms.CharField(label="Contrato de Venda:",  required=False)
 
     #cadastrado_por = forms.ModelChoiceField(queryset=Funcionario.objects.all().order_by(), label="Quem Cadastrou?:")
@@ -69,6 +75,8 @@ class EditarBookingForm(forms.ModelForm):
                   'quantidade',
                   'type',
                   'cotacao',
+                  'data_ddl_draft',
+                  'hora_ddl_draft',
                   'shipper',
                   'contrato_venda',
                   'cadastrado_por',

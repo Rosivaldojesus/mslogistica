@@ -27,6 +27,7 @@
               <th scope="col">VALID</th>
               <th scope="col">DETENTION</th>
               <th scope="col">DEMURRAGE</th>
+              <th scope="col">Editar</th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +44,9 @@
                 <td>{{ frete.valid|date:"d M, Y" }}</td>
                 <td>{{ frete.detention }}</td>
                 <td>{{ frete.demurrage }}</td>
+                <td>
+                    <a href="/cotacoes/editar-cotacoes/{{ frete.id }}" class="btn btn-primary">Editar</a>
+                </td>
 
             </tr>
             {% endfor %}

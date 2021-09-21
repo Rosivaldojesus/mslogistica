@@ -30,6 +30,8 @@ class Booking(models.Model):
     vendido_por = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='Vendido_Por', blank=True, null=True)
     data_venda = models.DateField(blank=True, null=True, verbose_name='Data da Venda')
     escritorio = models.ForeignKey(Escritorio, on_delete=models.DO_NOTHING, related_name='Vendido_Por_Filial_Por', blank=False, null=False)
+    data_ddl_draft = models.DateField(blank=True, null=True)
+    hora_ddl_draft = models.TimeField(blank=True, null=True)
     observacoes = models.TextField(blank=True, null=True)
 
     class Meta:
