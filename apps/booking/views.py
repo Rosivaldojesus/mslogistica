@@ -171,7 +171,7 @@ def ExportarCSV(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="relatorio-booking.csv"'
 
-    bookings = Booking.objects.all()
+    bookings = Booking.objects.filter(escritorio=request.user.funcionario.escritorio)
 
     writer = csv.writer(response)
     writer.writerow(['id','number_booking','pol','pod','navio','commodity','eta','armador','quantidade','type','status',
