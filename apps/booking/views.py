@@ -90,7 +90,7 @@ def RemoverBookingDisponivel(request, id=None):
     if request.method == "POST":
         booking.delete()
         messages.success(request, 'Booking removido com sucesso!')
-        return redirect('/')
+        return redirect('/booking/lista-booking-disponivel/')
     return render(request, 'booking/deletar-booking-disponivel.html', {'booking': booking})
 
 
@@ -119,7 +119,7 @@ def RemoverBookingVendido(request, id=None):
     if request.method == "POST":
         booking.delete()
         messages.success(request, 'Booking removido com sucesso!')
-        return redirect('/')
+        return redirect('/booking/lista-booking-vendido/')
     return render(request, 'booking/deletar-booking-vendido.html', {'booking': booking})
 
 
