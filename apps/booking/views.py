@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, DeleteView
 from django.db.models import F, Q
 from django.http import HttpResponse
 import csv
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from django.core.paginator import Paginator
 
 
@@ -24,8 +24,6 @@ def Index(request):
     if queryset:
         bookings = Booking.objects.filter(
             Q(number_booking__icontains=queryset))
-
-
 
     return render (request, 'booking/index.html', {'bookings': bookings})
 
@@ -62,8 +60,14 @@ def EditarBookingDisponivel(request, id=None):
 
 @login_required(login_url='/login/')
 def ListaBookingDisponivel(request):
+    from django.db.models.functions import ExtractDay
+    from django.db.models import F, Func
+    from django.db.models import Avg, F
     if request.user.funcionario.escritorio:
-        bookings = Booking.objects.filter(status='Vazio').filter(escritorio=request.user.funcionario.escritorio)
+        bookings = Booking.objects.filter(status='Vazio').filter(escritorio=request.user.funcionario.escritorio).annotate(
+    duration = Func(F('eta'), F('data_ddl_draft'), function='age')
+).filter(duration__gt=timedelta(days=365))
+
         queryset = request.GET.get('q')
         if queryset:
             bookings = Booking.objects.filter(

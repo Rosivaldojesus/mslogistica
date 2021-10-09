@@ -46,22 +46,50 @@
           <thead>
             <tr>
               <th scope="col">Nº Booking</th>
-              <th scope="col">Pol</th>
-              <th scope="col">Pod</th>
-              <th scope="col">Deletar</th>
+              <th scope="col">Cotação</th>
+
+
+              <th scope="col">POL</th>
+              <th scope="col">POD</th>
+
+              <th scope="col">ETA</th>
+              <th scope="col">NAVIO</th>
+
+
+              <th scope="col">DDL</th>
+              <th scope="col">DRAFT</th>
+
+
+              <th scope="col">Desvincular Venda</th>
               <th scope="col">Editar</th>
               <th scope="col">Opções</th>
                 <th>Ver</th>
+
+
             </tr>
           </thead>
           <tbody>
           {% for booking in bookings %}
             <tr>
               <td>{{ booking.number_booking }}</td>
+              <td><a href="/cotacoes/visualizar-cotacao/?id={{ booking.cotacoes.id }}">{{ booking.cotacoes }}</a></td>
+
+
               <td>{{ booking.pol }}</td>
               <td>{{ booking.pod }}</td>
+
+              <td>{{ booking.eta|date:"d M, Y"}}</td>
+              <td>{{ booking.navio }}</td>
+
+
+              <td>{{ booking.data_ddl_draft|date:"d M, Y" }}</td>
+              <td>{{ booking.hora_ddl_draft }}</td>
+
+
+
+
               <td>
-                  <a href="/booking/deletar-booking-disponivel/{{ booking.id }}" class="btn btn-danger">Deletar</a>
+                  <a href="/booking/deletar-booking-disponivel/{{ booking.id }}" class="btn btn-danger">Desvincular</a>
               </td>
                 <td>
                   <a href="/booking/editar-booking-disponivel/{{ booking.id }}" class="btn btn-primary">Editar</a>
@@ -72,6 +100,7 @@
                 <td>
                   <a href="/booking/visualizar-booking-disponivel/?id={{ booking.id }}" class="btn btn-info">Visualizar</a>
               </td>
+
             </tr>
           {% endfor %}
           </tbody>

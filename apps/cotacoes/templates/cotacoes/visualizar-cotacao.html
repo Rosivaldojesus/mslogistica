@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}<title>Visualizar Cotação</title>{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="mt-4 mb-4">
+        <strong>Cotação:</strong> {{ cotacao.pol }}<br>
+        <strong>POD:</strong> {{ cotacao.pod }}<br>
+        <strong>Carrier:</strong> {{ cotacao.carrier }}<br>
+        <strong>Quotation:</strong> {{ cotacao.quotation }}<br>
+        <strong>Commodity:</strong> {{ cotacao.cmmdty }}<br>
+        <strong>DV´20:</strong> {{ cotacao.dv20 }}<br>
+        <strong>DV´40:</strong> {{ cotacao.dv40 }}<br>
+        <strong>HC´40:</strong> {{ cotacao.hc40 }}<br>
+        <strong>Date: {{ cotacao.valid|date:"d M, Y" }}<br>
+        <strong>Detetion:</strong> {{ cotacao.detention }}<br>
+        <strong>Demurrage:</strong> {{ cotacao.demurrage }}<br>
+    </div>
+  </div>
+{% endblock %}

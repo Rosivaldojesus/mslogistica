@@ -28,6 +28,7 @@
               <th scope="col">DETENTION</th>
               <th scope="col">DEMURRAGE</th>
               <th scope="col">Editar</th>
+                <th>Ver</th>
             </tr>
           </thead>
           <tbody>
@@ -46,6 +47,10 @@
                 <td>{{ frete.demurrage }}</td>
                 <td>
                     <a href="/cotacoes/editar-cotacoes/{{ frete.id }}" class="btn btn-primary">Editar</a>
+                </td>
+
+                <td>
+                    <a href="/cotacoes/visualizar-cotacao/?id={{ frete.id }}" class="btn btn-info">Ver</a>
                 </td>
 
             </tr>

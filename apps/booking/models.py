@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from ..escritorios.models import Escritorio
 from django.utils import timezone
 from datetime import datetime
+from ..cotacoes.models import Cotacoes
 
 
 # Create your models here.
@@ -32,6 +33,7 @@ class Booking(models.Model):
     escritorio = models.ForeignKey(Escritorio, on_delete=models.DO_NOTHING, related_name='Vendido_Por_Filial_Por', blank=False, null=False)
     data_ddl_draft = models.DateField(blank=True, null=True)
     hora_ddl_draft = models.TimeField(blank=True, null=True)
+    cotacoes = models.ForeignKey(Cotacoes, on_delete=models.DO_NOTHING, blank=True, null=True)
     observacoes = models.TextField(blank=True, null=True)
 
     class Meta:

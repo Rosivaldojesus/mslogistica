@@ -29,3 +29,11 @@ def EditarCotacoes(request, id=None):
         messages.success(request, 'Cotação editado com sucesso.')
         return redirect('/')
     return render(request, 'cotacoes/editar-cotacoes.html', {'form': form})
+
+
+@login_required(login_url='/login/')
+def CotacaoVisualizacao(request):
+    cotacao = request.GET.get('id')
+    if cotacao:
+        cotacao = Cotacoes.objects.get(id=cotacao)
+    return render(request, 'cotacoes/visualizar-cotacao.html',{'cotacao': cotacao})
