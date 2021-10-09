@@ -2,10 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Cotacoes(models.Model):
+    quotation = models.CharField(max_length=255, blank=True, null=True)
     pol = models.CharField(max_length=255, blank=True, null=True)
     pod = models.CharField(max_length=255, blank=True, null=True)
     carrier = models.CharField(max_length=255, blank=True, null=True)
-    quotation = models.CharField(max_length=255, blank=True, null=True)
     cmmdty = models.CharField(max_length=255, blank=True, null=True)
     dv20 = models.CharField(max_length=255, blank=True, null=True)
     dv40 = models.CharField(max_length=255, blank=True, null=True)
