@@ -64,9 +64,7 @@ def ListaBookingDisponivel(request):
     from django.db.models import F, Func
     from django.db.models import Avg, F
     if request.user.funcionario.escritorio:
-        bookings = Booking.objects.filter(status='Vazio').filter(escritorio=request.user.funcionario.escritorio).annotate(
-    duration = Func(F('eta'), F('data_ddl_draft'), function='age')
-).filter(duration__gt=timedelta(days=365))
+        bookings = Booking.objects.filter(status='Vazio').filter(escritorio=request.user.funcionario.escritorio)
 
         queryset = request.GET.get('q')
         if queryset:
