@@ -60,7 +60,10 @@
         <th scope="col">DDL</th>
         <th scope="col">DRAFT</th>
 
+        <!--
         <th scope="col">Desvincular venda</th>
+        -->
+
         <th scope="col">Editar</th>
           <th scope="col">Opções</th>
       </tr>
@@ -79,10 +82,11 @@
         <td>{{ booking.data_ddl_draft|date:"d M, Y" }}</td>
         <td>{{ booking.hora_ddl_draft }}</td>
 
-
+    <!--
         <td>
           <a href="/booking/deletar-booking-vendido/{{ booking.id }}" class="btn btn-danger">Desvincular venda</a>
       </td>
+    -->
         <td>
             <a href="/booking/editar-booking-vendido/{{ booking.id }}" class="btn btn-primary">Editar</a>
         </td>
