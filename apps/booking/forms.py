@@ -5,6 +5,7 @@ from django.forms import NumberInput
 
 from .models import Booking
 from ..escritorios.models import Escritorio
+from ..cotacoes.models import Cotacoes
 from ..funcionarios.models import Funcionario
 
 
@@ -50,7 +51,7 @@ class CadastrarBookingForm(forms.ModelForm):
     data_ddl_draft = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}),label="Data DDL:",  required=False)
     hora_ddl_draft = forms.TimeField(widget=forms.DateInput(attrs={"type": "time"}), label="Hora DDL:",  required=False)
 
-    cotacoes = forms.Select()
+    cotacoes = forms.ModelChoiceField(queryset=Cotacoes.objects.all().order_by('quotation'), label="Cotações:",required=True)
 
     #contrato_venda = forms.CharField(label="Contrato de Venda:",  required=False)
 
