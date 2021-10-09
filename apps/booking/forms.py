@@ -51,7 +51,7 @@ class CadastrarBookingForm(forms.ModelForm):
     data_ddl_draft = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}),label="Data DDL:",  required=False)
     hora_ddl_draft = forms.TimeField(widget=forms.DateInput(attrs={"type": "time"}), label="Hora DDL:",  required=False)
 
-    cotacoes = forms.ModelChoiceField(queryset=Cotacoes.objects.values("quotation"), label="Cotações:",required=True)
+    cotacoes = forms.ModelChoiceField(queryset=Cotacoes.objects.values_list('quotation', flat = True), label="Cotações:",required=True)
 
     #contrato_venda = forms.CharField(label="Contrato de Venda:",  required=False)
 
